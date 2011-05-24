@@ -1,0 +1,149 @@
+/** 
+ * The basic layout of Carrot Search Circles demo pages.
+ */
+
+html {
+  height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+  line-height: 1.5;
+  background-color: #1d1c1b;
+  color: #ddd;
+  min-width: 1000px;
+  position: relative;
+  height: 100%;
+}
+
+body, input, button {
+	font-family: Trebuchet MS, Tahoma, Arial, sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: #1678C4;
+}
+
+/** Visualization area */
+
+#swfcontainer {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 60px;
+  bottom: 20px;
+
+  background-color: #141312;
+  border: 1px solid #100f0e;
+  -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#swf {
+  outline: none;
+}
+
+noscript {
+  position: absolute;
+  left: 25px;
+  color: black;
+  z-index: 5;
+  display: block;
+  border: 1px solid #dc9e27;
+  background-color: #fff3b7;
+  padding: 5px;
+  padding-left: 25px;
+  background-repeat: no-repeat;
+  padding: 1px 4px 1px 22px;
+  background-position: 3px 0px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin: 3px;
+  top: 75px;
+}
+
+input {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 2px 3px;
+}
+
+input[type='text'] {
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	border: 1px solid #000;
+  background-color: #e0e0e0;
+}
+
+input:hover {
+  background-color: #fff;
+     -moz-box-shadow: 0px 0px 3px #ff262b;
+  -webkit-box-shadow: 0px 0px 3px #ff262b;
+          box-shadow: 0px 0px 3px #ff262b;
+}
+input:focus {
+  background-color: #fff;
+     -moz-box-shadow: 0px 0px 5px #ff262b;
+  -webkit-box-shadow: 0px 0px 5px #ff262b;
+          box-shadow: 0px 0px 5px #ff262b;
+}  
+
+button {
+	background-color: #0a6ace;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #000;
+  -moz-box-shadow: 0px 0px 5px rgba(12, 60, 240, 0.4);
+  -webkit-box-shadow: 0px 0px 5px rgba(12, 60, 250, 0.4);
+  box-shadow: 0px 0px 5px rgba(12, 60, 240, 0.4);
+  padding: 1px 10px 2px 10px;
+  font-weight: bold;
+  color: #d0e0ff;
+}
+button:hover,
+button:focus,
+button:active {
+  color: #fff;
+}	
+button[disabled] {
+	border: 1px solid #222;
+	background-color: #aaa;
+  color: #ccc;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+input[name='url'] {
+  position: absolute;
+  right: 123px;
+  left: 23px;
+  top: 20px;
+}
+
+button {
+  position: absolute;
+  width: 100px;
+  right: 20px;
+  top: 20px;
+}
+
+#swf {
+  position: absolute;
+}
+
+#info {
+  position: absolute;
+  margin: 10px 20px;
+}

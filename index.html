@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Carrot Search FoamTree - Physics-inspired visualization of hierarchical data structures</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/layout.css"></link>
+  </head>
+
+  <body>
+    <input type="text" name="url" />
+    <button name="visualize">Visualize</button>
+
+    <div id="swfcontainer">
+      <div id="swf">
+        <div id="alt">To see the visualization, <a href="http://get.adobe.com/flashplayer/">install Adobe Flash Player</a></div>
+      </div>
+      <div id="info">
+        <p>
+          This is a simple visualization of clustered and faceted search results from Apache Solr. 
+        </p>
+
+        <p>
+          Instructions:
+        </p>
+
+        <ol>
+          <li>
+            Copy the XSLT stylesheets from the <tt>etc/</tt> folder to your <tt>${solr.home}/conf/xslt/</tt> folder.
+          </li>
+
+          <li>
+            <a href="http://wiki.apache.org/solr/ClusteringComponent#Quick_Start" rel="external">Configure search results clustering in your Solr instance</a>.
+          </li>
+
+          <li>
+            If you're viewing <tt>index.html</tt> from a local folder, add this folder to trusted locations in <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html" rel="external">Adobe Flash security settins</a>.
+          </li>
+
+          <li>
+            Paste a Solr URL to visualize in the input box and press <em>Visualize</em>. Some URLs based on Solr example docs:
+            <ul>
+              <li>Clustered results: <a href="http://localhost:3456/solr/clustering?q=*:*&amp;rows=100&amp;echoParams=all&amp;wt=xslt&amp;tr=c2.xsl" rel="example">http://localhost:3456/solr/clustering?q=*:*&amp;rows=100&amp;echoParams=all&amp;wt=xslt&amp;tr=c2.xsl</a></li>
+              <li>Faceted results: <a href="http://localhost:3456/solr/select?q=*:*&amp;facet=true&amp;facet.field=manu_id_s&amp;wt=xslt&amp;tr=c2-facets.xsl" rel="example">http://localhost:3456/solr/select?q=*:*&amp;facet=true&amp;facet.field=manu_id_s&amp;wt=xslt&amp;tr=c2-facets.xsl</a></li>
+              <li>Pivoted results (Solr 4.0): <a href="http://localhost:3456/solr/select?q=*:*&amp;facet=true&amp;facet.pivot=manu_id_s,popularity&amp;wt=xslt&amp;tr=c2-pivots.xsl" rel="example">http://localhost:3456/solr/select?q=*:*&amp;facet=true&amp;facet.pivot=manu_id_s,popularity&amp;wt=xslt&amp;tr=c2-pivots.xsl</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p>
+          For more information about this visualization, please see <a href="http://carrotsearch.com/foamtree" rel="external">http://carrotsearch.com/foamtree</a>.
+        </p>
+      </div>
+    </div>
+    
+    <noscript>
+      To use Carrot Search FoamTree, enable JavaScript.
+    </noscript>
+    
+    <script type="text/javascript" src="js/swfobject.js"></script>
+    <script type="text/javascript" src="js/carrotsearch.foamtree.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+
+    <script type="text/javascript">//<![CDATA[
+      $(document).ready(function() {
+        var foamtree = new CarrotSearchFoamTree({
+          visualizationSwfLocation: "swf/com.carrotsearch.visualizations.foamtree.swf",
+          flashPlayerInstallerSwfLocation: "swf/playerProductInstall.swf",
+          groupSizeWeighting: "score",
+          id: "swf" // id of the DOM element into which to embed the visualization
+        });
+
+        $("button[name = 'visualize']").click(function() {
+          $("#info").fadeOut(500);
+          foamtree.set("dataUrl", $("input[name = 'url']").val());
+        });
+
+        // Link handling
+        $("a[rel = 'external']").attr("target", "_blank");
+        $("a[rel = 'example']").click(function(e) {
+          $("input[name = 'url']").val(this.href);
+          e.preventDefault();
+        });
+      });
+    //]]></script>
+  </body>
+</html>
